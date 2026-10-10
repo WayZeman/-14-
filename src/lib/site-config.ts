@@ -18,6 +18,7 @@ export const siteConfig = {
   /** Username сторінки для Graph API (якщо FACEBOOK_PAGE_ID не задано) */
   facebookPageUsername: "14osb",
   instagramUrl: "https://www.instagram.com/14_orb/",
+  instagramHandle: "14_orb",
   social: [
     { label: "Facebook", href: "https://www.facebook.com/14osb/?locale=uk_UA" },
     { label: "Instagram", href: "https://www.instagram.com/14_orb/" },

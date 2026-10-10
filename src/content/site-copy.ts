@@ -101,8 +101,8 @@ export const siteCopy = {
   newsPreview: {
     title: "Останні публікації",
     empty:
-      "Слідкуйте за оновленнями у Facebook та Instagram — стрічка з’явиться тут автоматично.",
-    cta: "Архів новин",
+      "Стрічка Facebook нижче — прев’ю. Натисніть допис, щоб відкрити його у Facebook.",
+    cta: "Усі новини",
   },
 
   supportHome: {
@@ -177,13 +177,20 @@ export const siteCopy = {
   newsPage: {
     title: "Новини",
     intro:
-      "Матеріали з офіційного сайту та публікації зі сторінки Facebook батальйону (і Instagram, якщо підключено до Meta).",
-    empty: "Поки немає записів у стрічці. Перегляньте соцмережі нижче.",
+      "Прев’ю офіційної стрічки Facebook. Натисніть допис — відкриється сторінка батальйону у Facebook.",
+    empty: "Стрічка Facebook нижче.",
     sourceSite: "Сайт",
     sourceFacebook: "Facebook",
     sourceInstagram: "Instagram",
     socialTitle: "Соцмережі батальйону",
+    facebookFeedLead:
+      "Останні публікації зі сторінки 14 ОРБ. Це попередній перегляд — повний допис і коментарі відкриваються у Facebook.",
     facebookEmbedHint: "Останні публікації з офіційної сторінки Facebook.",
+    instagramEmbedHint: "Стрічка профілю @14_orb.",
+    ctaOpenFacebook: "Відкрити у Facebook",
+    ctaOpenInstagram: "Instagram @14_orb",
+    apiFeedTitle: "Зі стрічки Meta API",
+    siteFeedTitle: "Публікації на сайті",
   },
 
   contactsPage: {

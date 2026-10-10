@@ -35,7 +35,18 @@ Neon project (створено): `14orb-website` · id `weathered-field-27809363
    - `FACEBOOK_PAGE_ACCESS_TOKEN=…` (довгостроковий page token)
 5. Redeploy. Розділ `/news` і блок на головній підтягнуть пости через Graph API (кеш ~15 хв).
 
-Без токена на `/news` показується вбудована стрічка Facebook (віджет). Instagram у списку з’явиться автоматично, якщо `@14_orb` прив’язано до Facebook-сторінки в Meta Business Suite.
+Без токена на `/news` показуються **вбудовані стрічки** Facebook і Instagram.
+
+#### Instagram у списку новин (2 варіанти)
+
+**A. Через Facebook-сторінку (найпростіше)**  
+Якщо `@14_orb` прив’язано до сторінки `14osb` у Meta Business Suite — достатньо `FACEBOOK_PAGE_ACCESS_TOKEN`; пости Instagram підтягнуться автоматично.
+
+**B. Лише Instagram (окремі змінні)**  
+| `INSTAGRAM_USER_ID` | Numeric ID business/creator акаунта |
+| `INSTAGRAM_ACCESS_TOKEN` | Long-lived token з продукту **Instagram API** у Meta app |
+
+Facebook-токен для цього варіанту не обов’язковий.
 
 ## Локальний запуск
 

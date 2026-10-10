@@ -6,9 +6,12 @@ import { Container } from "@/components/ui/container";
 import { Section, Kicker, DisplayTitle } from "@/components/ui/section";
 import { Reveal } from "@/components/shared/reveal";
 import { NewsFeedFeatured } from "@/components/news/news-feed-list";
+import { FacebookFeedPanel } from "@/components/news/facebook-feed-panel";
 
 export function NewsPreview({ items }: { items: NewsFeedItem[] }) {
-  const [featured, ...rest] = items;
+  const siteOrApi = items.filter((i) => i.source === "site" || i.source === "facebook" || i.source === "instagram");
+  const [featured, ...rest] = siteOrApi;
+  const showList = siteOrApi.length > 0;
 
   return (
     <Section id="news" tone="paper">
@@ -28,11 +31,7 @@ export function NewsPreview({ items }: { items: NewsFeedItem[] }) {
           </Reveal>
         </div>
 
-        {items.length === 0 ? (
-          <Reveal>
-            <p className="mt-10 max-w-xl text-[var(--ink-soft)]">{siteCopy.newsPreview.empty}</p>
-          </Reveal>
-        ) : (
+        {showList ? (
           <div className="mt-10 grid gap-8 lg:grid-cols-12">
             {featured ? (
               <Reveal className="lg:col-span-7">
@@ -49,6 +48,10 @@ export function NewsPreview({ items }: { items: NewsFeedItem[] }) {
               ))}
             </ul>
           </div>
+        ) : (
+          <Reveal className="mt-10">
+            <FacebookFeedPanel compact showHint />
+          </Reveal>
         )}
       </Container>
     </Section>
