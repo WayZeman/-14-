@@ -13,7 +13,8 @@
     "db:seed": "tsx src/db/seed.ts",
     "content:check": "tsx scripts/check-content-duplicates.ts",
     "images:optimize": "node scripts/optimize-images.mjs",
-    "images:hero": "node scripts/build-hero-image.mjs"
+    "images:hero": "node scripts/build-hero-image.mjs",
+    "video:apply-guide": "node scripts/record-apply-guide.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
@@ -43,6 +44,7 @@
     "drizzle-kit": "^0.31.11",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "playwright": "^1.64.0",
     "sharp": "^0.33.5",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
