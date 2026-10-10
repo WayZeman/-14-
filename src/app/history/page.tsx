@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { eq } from "drizzle-orm";
-import { db } from "@/db";
-import { sitePages } from "@/db/schema";
 import { siteCopy } from "@/content/site-copy";
 import { siteImages } from "@/content/image-catalog";
+import { getSitePage, pageDefaults } from "@/lib/cms";
 import { PageFrame, PageHeader, ContentPanel } from "@/components/layout/page-frame";
 
 export const metadata: Metadata = {
@@ -14,22 +12,10 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function HistoryPage() {
-  let body: string = siteCopy.historyPage.fallback;
-  let title: string = siteCopy.historyPage.title;
-
-  try {
-    const [page] = await db
-      .select()
-      .from(sitePages)
-      .where(eq(sitePages.key, "history"))
-      .limit(1);
-    if (page) {
-      body = page.body;
-      title = page.title;
-    }
-  } catch {
-    /* fallback */
-  }
+  const page = await getSitePage("history");
+  const defaults = pageDefaults("history");
+  const title = page?.title ?? defaults.title;
+  const body = page?.body ?? defaults.body;
 
   return (
     <PageFrame>

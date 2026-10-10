@@ -4,7 +4,8 @@ import { db } from "@/db";
 import { newsArticles } from "@/db/schema";
 import { getSessionUser } from "@/lib/auth";
 import { AdminShell } from "@/components/admin/shell";
-import { createNewsAction } from "./actions";
+import { AdminField, AdminSelect, AdminSubmit } from "@/components/admin/field";
+import { createNewsAction, updateNewsAction, deleteNewsAction } from "./actions";
 import { formatUaDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -25,41 +26,59 @@ export default async function AdminNewsPage() {
 
       <form action={createNewsAction} className="mt-8 space-y-3 border bg-white p-6">
         <h2 className="font-semibold">Нова стаття</h2>
-        <input
-          name="title"
-          required
-          placeholder="Заголовок"
-          className="w-full border px-3 py-2 text-sm"
+        <AdminField label="Заголовок" name="title" required />
+        <AdminField label="Короткий опис" name="excerpt" />
+        <AdminField label="Текст" name="body" type="textarea" rows={6} required />
+        <AdminSelect
+          label="Статус"
+          name="status"
+          defaultValue="draft"
+          options={[
+            { value: "draft", label: "Чернетка" },
+            { value: "published", label: "Опубліковано" },
+          ]}
         />
-        <input
-          name="excerpt"
-          placeholder="Короткий опис"
-          className="w-full border px-3 py-2 text-sm"
-        />
-        <textarea
-          name="body"
-          required
-          rows={6}
-          placeholder="Текст"
-          className="w-full border px-3 py-2 text-sm"
-        />
-        <select name="status" className="border px-3 py-2 text-sm" defaultValue="draft">
-          <option value="draft">Чернетка</option>
-          <option value="published">Опубліковано</option>
-        </select>
-        <button type="submit" className="bg-[var(--accent)] px-4 py-2 text-sm font-semibold">
-          Зберегти
-        </button>
+        <AdminSubmit>Створити</AdminSubmit>
       </form>
 
-      <ul className="mt-8 space-y-3">
+      <ul className="mt-8 space-y-6">
         {items.map((item) => (
-          <li key={item.id} className="border bg-white p-4 text-sm">
-            <div className="font-semibold">{item.title}</div>
-            <div className="mt-1 text-[var(--muted)]">
-              {item.status} · {formatUaDate(item.publishedAt || item.createdAt)} · /news/
-              {item.slug}
+          <li key={item.id} className="border bg-white p-5">
+            <div className="mb-3 text-xs text-[var(--muted)]">
+              /news/{item.slug} · {formatUaDate(item.publishedAt || item.createdAt)}
             </div>
+            <form action={updateNewsAction} className="space-y-3">
+              <input type="hidden" name="id" value={item.id} />
+              <AdminField label="Заголовок" name="title" required defaultValue={item.title} />
+              <AdminField label="Короткий опис" name="excerpt" defaultValue={item.excerpt} />
+              <AdminField
+                label="Текст"
+                name="body"
+                type="textarea"
+                rows={6}
+                required
+                defaultValue={item.body}
+              />
+              <AdminSelect
+                label="Статус"
+                name="status"
+                defaultValue={item.status}
+                options={[
+                  { value: "draft", label: "Чернетка" },
+                  { value: "published", label: "Опубліковано" },
+                  { value: "archived", label: "Архів" },
+                ]}
+              />
+              <div className="flex flex-wrap gap-3">
+                <AdminSubmit>Оновити</AdminSubmit>
+              </div>
+            </form>
+            <form action={deleteNewsAction} className="mt-3">
+              <input type="hidden" name="id" value={item.id} />
+              <button type="submit" className="text-sm text-red-700 underline">
+                Видалити
+              </button>
+            </form>
           </li>
         ))}
       </ul>

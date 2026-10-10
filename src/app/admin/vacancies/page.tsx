@@ -3,7 +3,8 @@ import { db } from "@/db";
 import { vacancies } from "@/db/schema";
 import { getSessionUser } from "@/lib/auth";
 import { AdminShell } from "@/components/admin/shell";
-import { createVacancyAction } from "./actions";
+import { AdminField, AdminSelect, AdminSubmit } from "@/components/admin/field";
+import { createVacancyAction, updateVacancyAction, deleteVacancyAction } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -19,28 +20,71 @@ export default async function AdminVacanciesPage() {
 
       <form action={createVacancyAction} className="mt-8 space-y-3 border bg-white p-6">
         <h2 className="font-semibold">Нова вакансія</h2>
-        <input name="title" required placeholder="Назва посади" className="w-full border px-3 py-2 text-sm" />
-        <input name="direction" placeholder="Напрям" className="w-full border px-3 py-2 text-sm" />
-        <textarea name="shortDescription" rows={2} placeholder="Короткий опис" className="w-full border px-3 py-2 text-sm" />
-        <textarea name="description" rows={4} placeholder="Повний опис" className="w-full border px-3 py-2 text-sm" />
-        <textarea name="requirements" rows={3} placeholder="Вимоги" className="w-full border px-3 py-2 text-sm" />
-        <select name="status" defaultValue="open" className="border px-3 py-2 text-sm">
-          <option value="open">Набір відкрито</option>
-          <option value="paused">Пауза</option>
-          <option value="closed">Закрито</option>
-        </select>
-        <button type="submit" className="bg-[var(--accent)] px-4 py-2 text-sm font-semibold">
-          Зберегти
-        </button>
+        <AdminField label="Назва посади" name="title" required />
+        <AdminField label="Напрям" name="direction" />
+        <AdminField label="Короткий опис" name="shortDescription" type="textarea" rows={2} />
+        <AdminField label="Повний опис" name="description" type="textarea" rows={4} />
+        <AdminField label="Вимоги" name="requirements" type="textarea" rows={3} />
+        <AdminSelect
+          label="Статус"
+          name="status"
+          defaultValue="open"
+          options={[
+            { value: "open", label: "Набір відкрито" },
+            { value: "paused", label: "Пауза" },
+            { value: "closed", label: "Закрито" },
+          ]}
+        />
+        <AdminSubmit>Створити</AdminSubmit>
       </form>
 
-      <ul className="mt-8 space-y-3">
+      <ul className="mt-8 space-y-6">
         {items.map((item) => (
-          <li key={item.id} className="border bg-white p-4 text-sm">
-            <div className="font-semibold">{item.title}</div>
-            <div className="text-[var(--muted)]">
-              {item.status} · {item.direction || "—"} · /vacancies/{item.slug}
-            </div>
+          <li key={item.id} className="border bg-white p-5">
+            <div className="mb-3 text-xs text-[var(--muted)]">/vacancies/{item.slug}</div>
+            <form action={updateVacancyAction} className="space-y-3">
+              <input type="hidden" name="id" value={item.id} />
+              <AdminField label="Назва посади" name="title" required defaultValue={item.title} />
+              <AdminField label="Напрям" name="direction" defaultValue={item.direction} />
+              <AdminField
+                label="Короткий опис"
+                name="shortDescription"
+                type="textarea"
+                rows={2}
+                defaultValue={item.shortDescription}
+              />
+              <AdminField
+                label="Повний опис"
+                name="description"
+                type="textarea"
+                rows={4}
+                defaultValue={item.description}
+              />
+              <AdminField
+                label="Вимоги"
+                name="requirements"
+                type="textarea"
+                rows={3}
+                defaultValue={item.requirements}
+              />
+              <AdminSelect
+                label="Статус"
+                name="status"
+                defaultValue={item.status}
+                options={[
+                  { value: "open", label: "Набір відкрито" },
+                  { value: "paused", label: "Пауза" },
+                  { value: "closed", label: "Закрито" },
+                ]}
+              />
+              <AdminSubmit>Оновити</AdminSubmit>
+            </form>
+            <form action={deleteVacancyAction} className="mt-3">
+              <input type="hidden" name="id" value={item.id} />
+              <button type="submit" className="text-sm text-red-700 underline">
+                Видалити
+              </button>
+            </form>
           </li>
         ))}
       </ul>

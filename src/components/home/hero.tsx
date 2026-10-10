@@ -9,13 +9,21 @@ import { TextReveal } from "@/components/ui/text-reveal";
 import { LinkButton } from "@/components/ui/link-button";
 import { ThemedImage } from "@/components/ui/themed-image";
 
-export function Hero() {
+export function Hero({
+  headline: headlineProp,
+  sub,
+}: {
+  headline?: string;
+  sub?: string;
+} = {}) {
   const reduce = useReducedMotion();
   const img = siteImages.homeHero;
 
-  const headline = siteConfig.useExperimentalHeadline
-    ? siteConfig.heroHeadline
-    : siteConfig.heroHeadlineFallback;
+  const headline =
+    headlineProp ||
+    (siteConfig.useExperimentalHeadline
+      ? siteConfig.heroHeadline
+      : siteConfig.heroHeadlineFallback);
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-[var(--graphite)] text-white">
@@ -51,6 +59,17 @@ export function Hero() {
             </span>
             <TextReveal as="span" text={headline} delay={0.08} />
           </h1>
+
+          {sub ? (
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.45 }}
+              className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-lg"
+            >
+              {sub}
+            </motion.p>
+          ) : null}
 
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 12 }}

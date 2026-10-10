@@ -5,6 +5,7 @@ import { vacancies } from "@/db/schema";
 import { siteCopy } from "@/content/site-copy";
 import { siteImages } from "@/content/image-catalog";
 import { siteConfig } from "@/lib/site-config";
+import { getContactsSettings, getSitePage, pageDefaults } from "@/lib/cms";
 import {
   PageFrame,
   PageHeader,
@@ -44,12 +45,21 @@ export default async function JoinPage() {
     directions = ["Оператор БпЛА", "Розвідник", "Водій", "Медик"];
   }
 
+  const [contacts, page] = await Promise.all([getContactsSettings(), getSitePage("join")]);
+  const defaults = pageDefaults("join");
+  const title = page?.title ?? defaults.title;
+  const intro = page?.body || defaults.body;
+  const social = [
+    { label: "Facebook", href: contacts.facebookUrl },
+    { label: "Instagram", href: contacts.instagramUrl },
+  ] as const;
+
   return (
     <PageFrame>
       <PageHeader
         kicker="Рекрутинг"
-        title={siteCopy.joinPage.title}
-        lead={siteCopy.joinPage.intro}
+        title={title}
+        lead={intro}
         media={siteImages.illustrative.heroAtmosphere}
       />
 
@@ -60,15 +70,15 @@ export default async function JoinPage() {
               <h2 className="font-display text-lg font-semibold text-[var(--graphite)]">
                 {siteCopy.joinPage.contactTitle}
               </h2>
-              <p className="mt-2 text-sm text-[var(--ink-soft)] md:text-base">{siteConfig.workingHours}</p>
-              <PagePhoneLink phone={siteConfig.phone} className="mt-5">
+              <p className="mt-2 text-sm text-[var(--ink-soft)] md:text-base">{contacts.workingHours}</p>
+              <PagePhoneLink phone={contacts.phone} className="mt-5">
                 {siteCopy.finalCta.ctaPhone}
               </PagePhoneLink>
               <div className="mt-6 flex flex-col gap-3">
                 <LinkButton href="/vacancies" variant="outline" className="w-full">
                   {siteCopy.joinPage.ctaVacancies}
                 </LinkButton>
-                <SocialLinks stacked />
+                <SocialLinks stacked links={social} />
               </div>
             </PageCard>
 

@@ -3,7 +3,8 @@ import { db } from "@/db";
 import { supportCampaigns } from "@/db/schema";
 import { getSessionUser } from "@/lib/auth";
 import { AdminShell } from "@/components/admin/shell";
-import { createCampaignAction } from "./actions";
+import { AdminField, AdminSelect, AdminSubmit } from "@/components/admin/field";
+import { createCampaignAction, updateCampaignAction, deleteCampaignAction } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -22,27 +23,70 @@ export default async function AdminCampaignsPage() {
 
       <form action={createCampaignAction} className="mt-8 space-y-3 border bg-white p-6">
         <h2 className="font-semibold">Новий збір</h2>
-        <input name="title" required placeholder="Назва" className="w-full border px-3 py-2 text-sm" />
-        <textarea name="description" rows={3} placeholder="Опис" className="w-full border px-3 py-2 text-sm" />
-        <input name="monobankUrl" placeholder="Monobank URL" className="w-full border px-3 py-2 text-sm" />
-        <input name="cardNumber" placeholder="Номер картки" className="w-full border px-3 py-2 text-sm" />
-        <input name="goalAmount" type="number" placeholder="Ціль (грн, опційно)" className="w-full border px-3 py-2 text-sm" />
-        <input name="raisedAmount" type="number" placeholder="Зібрано (грн, опційно)" className="w-full border px-3 py-2 text-sm" />
-        <select name="status" defaultValue="active" className="border px-3 py-2 text-sm">
-          <option value="active">Активний</option>
-          <option value="completed">Завершено</option>
-          <option value="paused">Пауза</option>
-        </select>
-        <button type="submit" className="bg-[var(--accent)] px-4 py-2 text-sm font-semibold">
-          Зберегти
-        </button>
+        <AdminField label="Назва" name="title" required />
+        <AdminField label="Опис" name="description" type="textarea" rows={3} />
+        <AdminField label="Monobank URL" name="monobankUrl" />
+        <AdminField label="Номер картки" name="cardNumber" />
+        <AdminField label="Ціль (грн, опційно)" name="goalAmount" type="number" />
+        <AdminField label="Зібрано (грн, опційно)" name="raisedAmount" type="number" />
+        <AdminSelect
+          label="Статус"
+          name="status"
+          defaultValue="active"
+          options={[
+            { value: "active", label: "Активний" },
+            { value: "completed", label: "Завершено" },
+            { value: "paused", label: "Пауза" },
+          ]}
+        />
+        <AdminSubmit>Створити</AdminSubmit>
       </form>
 
-      <ul className="mt-8 space-y-3">
+      <ul className="mt-8 space-y-6">
         {items.map((item) => (
-          <li key={item.id} className="border bg-white p-4 text-sm">
-            <div className="font-semibold">{item.title}</div>
-            <div className="text-[var(--muted)]">{item.status}</div>
+          <li key={item.id} className="border bg-white p-5">
+            <form action={updateCampaignAction} className="space-y-3">
+              <input type="hidden" name="id" value={item.id} />
+              <AdminField label="Назва" name="title" required defaultValue={item.title} />
+              <AdminField
+                label="Опис"
+                name="description"
+                type="textarea"
+                rows={3}
+                defaultValue={item.description}
+              />
+              <AdminField label="Monobank URL" name="monobankUrl" defaultValue={item.monobankUrl} />
+              <AdminField label="Номер картки" name="cardNumber" defaultValue={item.cardNumber} />
+              <AdminField
+                label="Ціль (грн)"
+                name="goalAmount"
+                type="number"
+                defaultValue={item.goalAmount}
+              />
+              <AdminField
+                label="Зібрано (грн)"
+                name="raisedAmount"
+                type="number"
+                defaultValue={item.raisedAmount}
+              />
+              <AdminSelect
+                label="Статус"
+                name="status"
+                defaultValue={item.status}
+                options={[
+                  { value: "active", label: "Активний" },
+                  { value: "completed", label: "Завершено" },
+                  { value: "paused", label: "Пауза" },
+                ]}
+              />
+              <AdminSubmit>Оновити</AdminSubmit>
+            </form>
+            <form action={deleteCampaignAction} className="mt-3">
+              <input type="hidden" name="id" value={item.id} />
+              <button type="submit" className="text-sm text-red-700 underline">
+                Видалити
+              </button>
+            </form>
           </li>
         ))}
       </ul>

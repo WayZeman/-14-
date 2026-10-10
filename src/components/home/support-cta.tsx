@@ -10,13 +10,20 @@ import { Reveal } from "@/components/shared/reveal";
 import { LinkButton } from "@/components/ui/link-button";
 import { SectionBackdrop } from "@/components/ui/themed-image";
 import { maskCardNumber } from "@/lib/mask-card";
-export function SupportCta() {
+
+export function SupportCta({
+  monobankUrl = siteConfig.monobankUrl,
+  cardNumber = siteConfig.cardNumber,
+}: {
+  monobankUrl?: string;
+  cardNumber?: string;
+} = {}) {
   const [copied, setCopied] = useState(false);
-  const masked = maskCardNumber(siteConfig.cardNumber);
+  const masked = maskCardNumber(cardNumber);
 
   async function copyCard() {
     try {
-      await navigator.clipboard.writeText(siteConfig.cardNumber);
+      await navigator.clipboard.writeText(cardNumber);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -74,7 +81,7 @@ export function SupportCta() {
 
               <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-stretch">
                 <a
-                  href={siteConfig.monobankUrl}
+                  href={monobankUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-12 flex-1 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--accent)] px-4 py-3 text-center text-sm font-semibold tracking-wide text-[var(--ink-inverse)] transition-colors hover:bg-[var(--accent-hover)] focus-ring"

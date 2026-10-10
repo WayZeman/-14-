@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { eq } from "drizzle-orm";
-import { db } from "@/db";
-import { sitePages } from "@/db/schema";
 import { siteCopy } from "@/content/site-copy";
-import { siteConfig } from "@/lib/site-config";
+import { getSitePage, pageDefaults } from "@/lib/cms";
 import { PageFrame, PageHeader, ContentPanel } from "@/components/layout/page-frame";
 
 export const metadata: Metadata = {
@@ -14,22 +11,10 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AboutPage() {
-  let body: string = siteConfig.aboutOfficial;
-  let title: string = siteCopy.aboutPage.title;
-
-  try {
-    const [page] = await db
-      .select()
-      .from(sitePages)
-      .where(eq(sitePages.key, "about"))
-      .limit(1);
-    if (page) {
-      body = page.body;
-      title = page.title;
-    }
-  } catch {
-    /* fallback */
-  }
+  const page = await getSitePage("about");
+  const defaults = pageDefaults("about");
+  const title = page?.title ?? defaults.title;
+  const body = page?.body ?? defaults.body;
 
   return (
     <PageFrame>

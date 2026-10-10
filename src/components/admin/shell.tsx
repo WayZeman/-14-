@@ -22,6 +22,7 @@ export function AdminShell({
           <div className="font-display text-lg font-semibold">14 ОРБ · Адмін</div>
           <nav className="flex flex-wrap gap-4 text-sm">
             <Link href="/admin">Огляд</Link>
+            <Link href="/admin/content">Тексти</Link>
             <Link href="/admin/news">Новини</Link>
             <Link href="/admin/vacancies">Вакансії</Link>
             <Link href="/admin/campaigns">Збори</Link>

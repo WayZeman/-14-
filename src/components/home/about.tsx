@@ -1,12 +1,11 @@
-import { siteCopy } from "@/content/site-copy";
-import { siteConfig } from "@/lib/site-config";
 import { siteImages } from "@/content/image-catalog";
 import { Container } from "@/components/ui/container";
 import { Section, Kicker, DisplayTitle } from "@/components/ui/section";
 import { Reveal } from "@/components/shared/reveal";
 import { ThemedImage } from "@/components/ui/themed-image";
+import type { HomeAboutSettings } from "@/lib/cms";
 
-export function AboutSection() {
+export function AboutSection({ content }: { content: HomeAboutSettings }) {
   const img = siteImages.illustrative.teamCoordination;
 
   return (
@@ -28,18 +27,18 @@ export function AboutSection() {
           <div className="lg:col-span-7 lg:pl-4 xl:pl-8">
             <Reveal>
               <Kicker index="01">Хто ми</Kicker>
-              <DisplayTitle>{siteCopy.homeAbout.title}</DisplayTitle>
+              <DisplayTitle>{content.title}</DisplayTitle>
             </Reveal>
 
             <Reveal delay={0.06} className="mt-8">
               <blockquote className="border-l-2 border-[var(--accent)] pl-5 font-editorial text-xl leading-snug text-[var(--graphite)] md:text-2xl">
-                {siteConfig.aboutOfficial}
+                {content.quote}
               </blockquote>
             </Reveal>
 
             <Reveal delay={0.1} className="mt-8 space-y-5 text-base leading-relaxed text-[var(--ink-soft)] md:text-lg">
-              <p>{siteCopy.homeAbout.paragraph2}</p>
-              <p>{siteCopy.homeAbout.paragraph3}</p>
+              <p>{content.paragraph2}</p>
+              <p>{content.paragraph3}</p>
             </Reveal>
           </div>
         </div>

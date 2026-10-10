@@ -7,7 +7,13 @@ import { LinkButton } from "@/components/ui/link-button";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export function FinalCta() {
+export function FinalCta({
+  phone = siteConfig.phone,
+  workingHours = siteConfig.workingHours,
+}: {
+  phone?: string;
+  workingHours?: string;
+} = {}) {
   return (
     <Section tone="paper" className="!pb-20">
       <Container>
@@ -20,7 +26,7 @@ export function FinalCta() {
             <Lead className="mt-4">{siteCopy.finalCta.body}</Lead>
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <a
-                href={`tel:${siteConfig.phone}`}
+                href={`tel:${phone}`}
                 className={cn(
                   buttonVariants({ variant: "dark", size: "default" }),
                   "w-full !text-white sm:w-auto",
@@ -36,7 +42,7 @@ export function FinalCta() {
               </LinkButton>
             </div>
             <p className="mt-5 text-center text-sm text-[var(--muted)] sm:text-left">
-              {siteConfig.workingHours}
+              {workingHours}
             </p>
           </div>
         </Reveal>

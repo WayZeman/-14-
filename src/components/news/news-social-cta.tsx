@@ -2,7 +2,15 @@ import { siteCopy } from "@/content/site-copy";
 import { SocialLinks } from "@/components/layout/social-links";
 import { cn } from "@/lib/utils";
 
-export function NewsSocialCta({ className }: { className?: string }) {
+export function NewsSocialCta({
+  className,
+  message,
+  links,
+}: {
+  className?: string;
+  message?: string;
+  links?: readonly { label: string; href: string }[];
+}) {
   return (
     <div
       className={cn(
@@ -11,9 +19,9 @@ export function NewsSocialCta({ className }: { className?: string }) {
       )}
     >
       <p className="max-w-2xl text-base leading-relaxed text-[var(--ink-soft)] md:text-lg">
-        {siteCopy.newsPage.socialMessage}
+        {message || siteCopy.newsPage.socialMessage}
       </p>
-      <SocialLinks className="mt-6" stacked />
+      <SocialLinks className="mt-6" stacked links={links} />
     </div>
   );
 }
