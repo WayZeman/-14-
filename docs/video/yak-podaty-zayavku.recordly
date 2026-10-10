@@ -3,18 +3,18 @@
   "videoPath": "/Users/macbook/Desktop/14orb-website/public/media/yak-podaty-zayavku.webm",
   "editor": {
     "wallpaper": "/wallpapers/wallpaper1.jpg",
-    "shadowIntensity": 0.72,
-    "backgroundBlur": 0.2,
+    "shadowIntensity": 0.7,
+    "backgroundBlur": 0.15,
     "zoomMotionBlur": 0.35,
     "connectZooms": true,
     "showCursor": true,
     "loopCursor": false,
-    "cursorSize": 3.2,
-    "cursorSmoothing": 0.7,
+    "cursorSize": 3.1,
+    "cursorSmoothing": 0.72,
     "cursorMotionBlur": 0.35,
-    "cursorClickBounce": 2.5,
-    "borderRadius": 14,
-    "padding": 52,
+    "cursorClickBounce": 2.4,
+    "borderRadius": 12,
+    "padding": 48,
     "cropRegion": {
       "x": 0,
       "y": 0,
@@ -23,265 +23,99 @@
     },
     "zoomRegions": [
       {
-        "id": "036898dc-f7a5-4a54-a681-47fcef45c20b",
-        "startMs": 9640,
-        "endMs": 10740,
-        "depth": 3,
+        "id": "51ee1097-d023-443f-927e-3589774a2b17",
+        "startMs": 7065,
+        "endMs": 8765,
+        "depth": 4,
         "focus": {
-          "cx": 0.4099951171875,
+          "cx": 0.8444921875,
           "cy": 0.036
         }
       },
       {
-        "id": "d0ba1138-367f-4996-9553-624b4a85af3e",
-        "startMs": 15781,
-        "endMs": 16681,
-        "depth": 3,
+        "id": "f1b203a3-3c27-4d03-b53a-9bc887f60a04",
+        "startMs": 13876,
+        "endMs": 14976,
+        "depth": 4,
         "focus": {
           "cx": 0.6645751953125,
-          "cy": 0.421
+          "cy": 0.6665
         }
       },
       {
-        "id": "ca4a4c2e-9b38-40ef-824e-e7bb12475647",
-        "startMs": 19044,
-        "endMs": 19944,
-        "depth": 3,
+        "id": "59e7a426-e98c-42dc-90e6-7bf6281ab446",
+        "startMs": 14984,
+        "endMs": 15684,
+        "depth": 4,
         "focus": {
-          "cx": 0.6645751953125,
-          "cy": 0.519
+          "cx": 0.6645752334594727,
+          "cy": 0.19037249755859376
         }
       },
       {
-        "id": "df1f5086-6c9d-454f-bf2d-3224fd1558d0",
-        "startMs": 22462,
-        "endMs": 23262,
-        "depth": 3,
+        "id": "ea4f3edb-0b5d-49ca-a743-3ee872114712",
+        "startMs": 17938,
+        "endMs": 18638,
+        "depth": 4,
         "focus": {
-          "cx": 0.564052734375,
-          "cy": 0.6165
+          "cx": 0.6645752334594727,
+          "cy": 0.6169996337890625
         }
       },
       {
-        "id": "6a012a10-e39a-4295-a394-8b2f483af807",
-        "startMs": 25086,
-        "endMs": 25886,
-        "depth": 3,
+        "id": "8fb782d6-3deb-416c-9b49-e7cef1a34075",
+        "startMs": 21081,
+        "endMs": 21731,
+        "depth": 4,
         "focus": {
-          "cx": 0.7650927734375,
-          "cy": 0.6165
+          "cx": 0.5188176727294922,
+          "cy": 0.3779618225097656
         }
       },
       {
-        "id": "fc57258c-5ffa-4e4a-ba5c-4eded3e93faf",
-        "startMs": 27310,
-        "endMs": 28010,
-        "depth": 3,
+        "id": "37765c7f-3f3d-4662-8bf3-d02be668d999",
+        "startMs": 23252,
+        "endMs": 23902,
+        "depth": 4,
         "focus": {
-          "cx": 0.6645751953125,
-          "cy": 0.744
+          "cx": 0.8636027908325196,
+          "cy": 0.5939274291992187
         }
       },
       {
-        "id": "e8b74ab6-8bbd-4f4f-b765-64e7393d92a0",
-        "startMs": 32548,
-        "endMs": 33448,
-        "depth": 3,
+        "id": "9ff64077-6880-4dc2-b303-2dbc00c2c0b4",
+        "startMs": 25429,
+        "endMs": 26079,
+        "depth": 4,
         "focus": {
-          "cx": 0.473974609375,
-          "cy": 0.835
+          "cx": 0.5849642181396484,
+          "cy": 0.6012531127929688
         }
       },
       {
-        "id": "203696f5-bdf9-418b-87f2-ff3b2ae5e9e4",
-        "startMs": 34877,
-        "endMs": 36477,
-        "depth": 3,
+        "id": "7c5a92c0-eda6-4ba1-80b1-3ae4aa20e56f",
+        "startMs": 30745,
+        "endMs": 31545,
+        "depth": 4,
         "focus": {
-          "cx": 0.52923828125,
-          "cy": 0.907
+          "cx": 0.4351282501220703,
+          "cy": 0.7368659057617187
+        }
+      },
+      {
+        "id": "fb50c769-c899-4b5b-9343-295697278233",
+        "startMs": 33113,
+        "endMs": 34213,
+        "depth": 4,
+        "focus": {
+          "cx": 0.5762933158874511,
+          "cy": 0.668449951171875
         }
       }
     ],
     "trimRegions": [],
     "speedRegions": [],
-    "annotationRegions": [
-      {
-        "id": "b636ff40-17e6-4b84-a57b-d0ba8cb81453",
-        "type": "text",
-        "startMs": 6508,
-        "endMs": 9008,
-        "text": "1 · Відкрийте 14orb.co.ua",
-        "position": {
-          "x": 0.08,
-          "y": 0.82
-        },
-        "size": {
-          "width": 0.42,
-          "height": 0.14
-        },
-        "style": {
-          "color": "#ffffff",
-          "backgroundColor": "rgba(16,20,26,0.92)",
-          "fontSize": 28,
-          "fontFamily": "SF Pro Display",
-          "fontWeight": "bold",
-          "fontStyle": "normal",
-          "textDecoration": "none",
-          "textAlign": "left"
-        }
-      },
-      {
-        "id": "ef6e82f9-0955-465b-994f-98e96dedce48",
-        "type": "text",
-        "startMs": 8711,
-        "endMs": 11211,
-        "text": "2 · Натисніть «Приєднатися»",
-        "position": {
-          "x": 0.08,
-          "y": 0.82
-        },
-        "size": {
-          "width": 0.42,
-          "height": 0.14
-        },
-        "style": {
-          "color": "#ffffff",
-          "backgroundColor": "rgba(16,20,26,0.92)",
-          "fontSize": 28,
-          "fontFamily": "SF Pro Display",
-          "fontWeight": "bold",
-          "fontStyle": "normal",
-          "textDecoration": "none",
-          "textAlign": "left"
-        }
-      },
-      {
-        "id": "d772897e-29d5-4f65-a4e4-e5bc69de3f87",
-        "type": "text",
-        "startMs": 13153,
-        "endMs": 15653,
-        "text": "3 · Сторінка звернення",
-        "position": {
-          "x": 0.08,
-          "y": 0.82
-        },
-        "size": {
-          "width": 0.42,
-          "height": 0.14
-        },
-        "style": {
-          "color": "#ffffff",
-          "backgroundColor": "rgba(16,20,26,0.92)",
-          "fontSize": 28,
-          "fontFamily": "SF Pro Display",
-          "fontWeight": "bold",
-          "fontStyle": "normal",
-          "textDecoration": "none",
-          "textAlign": "left"
-        }
-      },
-      {
-        "id": "d5401082-ad8c-4569-8d19-456f01a6946b",
-        "type": "text",
-        "startMs": 15777,
-        "endMs": 18277,
-        "text": "4 · Заповніть ім'я та контакт",
-        "position": {
-          "x": 0.08,
-          "y": 0.82
-        },
-        "size": {
-          "width": 0.42,
-          "height": 0.14
-        },
-        "style": {
-          "color": "#ffffff",
-          "backgroundColor": "rgba(16,20,26,0.92)",
-          "fontSize": 28,
-          "fontFamily": "SF Pro Display",
-          "fontWeight": "bold",
-          "fontStyle": "normal",
-          "textDecoration": "none",
-          "textAlign": "left"
-        }
-      },
-      {
-        "id": "a184f970-dc54-4d11-91d7-67551b71ed84",
-        "type": "text",
-        "startMs": 22458,
-        "endMs": 24958,
-        "text": "5 · Додайте деталі (опційно)",
-        "position": {
-          "x": 0.08,
-          "y": 0.82
-        },
-        "size": {
-          "width": 0.42,
-          "height": 0.14
-        },
-        "style": {
-          "color": "#ffffff",
-          "backgroundColor": "rgba(16,20,26,0.92)",
-          "fontSize": 28,
-          "fontFamily": "SF Pro Display",
-          "fontWeight": "bold",
-          "fontStyle": "normal",
-          "textDecoration": "none",
-          "textAlign": "left"
-        }
-      },
-      {
-        "id": "ceadee7e-6c7e-4570-8df1-988ac1fc7d8a",
-        "type": "text",
-        "startMs": 32543,
-        "endMs": 35043,
-        "text": "6 · Погодьте політику конфіденційності",
-        "position": {
-          "x": 0.08,
-          "y": 0.82
-        },
-        "size": {
-          "width": 0.42,
-          "height": 0.14
-        },
-        "style": {
-          "color": "#ffffff",
-          "backgroundColor": "rgba(16,20,26,0.92)",
-          "fontSize": 28,
-          "fontFamily": "SF Pro Display",
-          "fontWeight": "bold",
-          "fontStyle": "normal",
-          "textDecoration": "none",
-          "textAlign": "left"
-        }
-      },
-      {
-        "id": "7e93de58-ed86-4f72-b42c-93882aed9605",
-        "type": "text",
-        "startMs": 34871,
-        "endMs": 37371,
-        "text": "7 · Надішліть звернення",
-        "position": {
-          "x": 0.08,
-          "y": 0.82
-        },
-        "size": {
-          "width": 0.42,
-          "height": 0.14
-        },
-        "style": {
-          "color": "#ffffff",
-          "backgroundColor": "rgba(16,20,26,0.92)",
-          "fontSize": 28,
-          "fontFamily": "SF Pro Display",
-          "fontWeight": "bold",
-          "fontStyle": "normal",
-          "textDecoration": "none",
-          "textAlign": "left"
-        }
-      }
-    ],
+    "annotationRegions": [],
     "audioRegions": [],
     "aspectRatio": "16:9",
     "exportQuality": "high",
@@ -291,113 +125,119 @@
     "gifSizePreset": "large"
   },
   "meta": {
-    "title": "14 ОРБ — Як подати заявку",
-    "source": "recordly-inspired",
-    "totalMs": 42932,
+    "title": "Як подати звернення на куратора?",
+    "totalMs": 40934,
     "cursorTelemetry": [
       {
-        "timeMs": 11656,
-        "cx": 0.4099950981140137,
-        "cy": 0.035911970138549805,
+        "timeMs": 9369,
+        "cx": 0.8444922637939453,
+        "cy": -0.15690353012084962,
         "interactionType": "move",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 11841,
-        "cx": 0.4099951171875,
-        "cy": 0.036,
+        "timeMs": 9590,
+        "cx": 0.8444922637939453,
+        "cy": -0.15690353012084962,
         "interactionType": "click",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 17605,
-        "cx": 0.6645752143859863,
-        "cy": 0.4209234161376953,
+        "timeMs": 16290,
+        "cx": 0.6645752334594727,
+        "cy": 0.474899658203125,
         "interactionType": "move",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 17790,
-        "cx": 0.6645751953125,
-        "cy": 0.421,
+        "timeMs": 16511,
+        "cx": 0.6645752334594727,
+        "cy": 0.474899658203125,
         "interactionType": "click",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 20857,
-        "cx": 0.6645751953125,
-        "cy": 0.5188226013183593,
+        "timeMs": 19241,
+        "cx": 0.6645752334594727,
+        "cy": 0.23658682250976562,
         "interactionType": "move",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 21042,
-        "cx": 0.6645751953125,
-        "cy": 0.519,
+        "timeMs": 19463,
+        "cx": 0.6645752334594727,
+        "cy": 0.23658682250976562,
         "interactionType": "click",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 24172,
-        "cx": 0.564052734375,
-        "cy": 0.6162832641601562,
+        "timeMs": 22326,
+        "cx": 0.5821469116210938,
+        "cy": 0.5939273071289063,
         "interactionType": "move",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 24356,
-        "cx": 0.564052734375,
-        "cy": 0.6165,
+        "timeMs": 22546,
+        "cx": 0.5821469116210938,
+        "cy": 0.5939273071289063,
         "interactionType": "click",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 26805,
-        "cx": 0.7650927734375,
-        "cy": 0.6162832641601562,
+        "timeMs": 24510,
+        "cx": 0.7256888198852539,
+        "cy": 0.422753173828125,
         "interactionType": "move",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 26988,
-        "cx": 0.7650927734375,
-        "cy": 0.6165,
+        "timeMs": 24731,
+        "cx": 0.7256888198852539,
+        "cy": 0.422753173828125,
         "interactionType": "click",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 28921,
-        "cx": 0.6645751953125,
-        "cy": 0.7437319641113281,
+        "timeMs": 26677,
+        "cx": 0.6924392700195312,
+        "cy": 0.6140149536132813,
         "interactionType": "move",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 29111,
-        "cx": 0.6645751953125,
-        "cy": 0.744,
+        "timeMs": 26897,
+        "cx": 0.6924392700195312,
+        "cy": 0.6140149536132813,
         "interactionType": "click",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 34372,
-        "cx": 0.473974609375,
-        "cy": 0.834695556640625,
+        "timeMs": 32144,
+        "cx": 0.49339778900146486,
+        "cy": 0.560449951171875,
         "interactionType": "move",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 34557,
-        "cx": 0.473974609375,
-        "cy": 0.835,
+        "timeMs": 32365,
+        "cx": 0.49339778900146486,
+        "cy": 0.560449951171875,
         "interactionType": "click",
         "cursorType": "pointer"
       },
       {
-        "timeMs": 37405,
-        "cx": 0.52923828125,
-        "cy": 0.9066660461425782,
+        "timeMs": 34828,
+        "cx": 0.5010052490234375,
+        "cy": 0.7020799560546875,
         "interactionType": "move",
+        "cursorType": "pointer"
+      },
+      {
+        "timeMs": 35049,
+        "cx": 0.5010052490234375,
+        "cy": 0.7020799560546875,
+        "interactionType": "click",
         "cursorType": "pointer"
       }
     ],
