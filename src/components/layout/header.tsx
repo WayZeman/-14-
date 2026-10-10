@@ -32,6 +32,21 @@ export function Header() {
     };
   }, [open]);
 
+  /** In-page anchors scroll without leaving #hash in the URL (avoids refresh landing mid-page). */
+  function onHashNav(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    if (!href.startsWith("/#")) return;
+    const id = href.slice(2);
+    if (pathname !== "/") return;
+
+    e.preventDefault();
+    setOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    history.replaceState(null, "", "/");
+  }
+
   return (
     <header
       className={cn(
@@ -60,6 +75,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={(e) => onHashNav(e, item.href)}
               className={cn(
                 "nav-link focus-ring text-[13px] transition-colors xl:text-sm",
                 paperNav && !isHome
@@ -123,7 +139,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => onHashNav(e, item.href)}
                     className={cn(
                       "block border-b py-3.5 text-base last:border-0",
                       paperNav && !isHome

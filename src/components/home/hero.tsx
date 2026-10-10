@@ -61,7 +61,19 @@ export function Hero() {
             <LinkButton href="/join" variant="primary" size="lg">
               {siteCopy.hero.ctaJoin}
             </LinkButton>
-            <LinkButton href="/#about" variant="secondary" size="lg">
+            <LinkButton
+              href="/#about"
+              variant="secondary"
+              size="lg"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("about")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+                history.replaceState(null, "", "/");
+              }}
+            >
               {siteCopy.hero.ctaAbout}
             </LinkButton>
           </motion.div>
