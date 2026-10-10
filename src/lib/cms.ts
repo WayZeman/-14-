@@ -1,9 +1,24 @@
+import "server-only";
+
 import { eq } from "drizzle-orm";
 import { cache } from "react";
 import { db } from "@/db";
 import { sitePages, siteSettings } from "@/db/schema";
 import { siteConfig } from "@/lib/site-config";
 import { siteCopy } from "@/content/site-copy";
+import type {
+  ContactsSettings,
+  HeroSettings,
+  HomeAboutSettings,
+  SupportSettings,
+} from "@/lib/cms-types";
+
+export type {
+  ContactsSettings,
+  HeroSettings,
+  HomeAboutSettings,
+  SupportSettings,
+} from "@/lib/cms-types";
 
 export const CMS_PAGES = [
   {
@@ -49,31 +64,6 @@ export const CMS_PAGES = [
 ] as const;
 
 export type CmsPageKey = (typeof CMS_PAGES)[number]["key"];
-
-export type ContactsSettings = {
-  phone: string;
-  phoneDisplay: string;
-  workingHours: string;
-  facebookUrl: string;
-  instagramUrl: string;
-};
-
-export type SupportSettings = {
-  monobankUrl: string;
-  cardNumber: string;
-};
-
-export type HeroSettings = {
-  headline: string;
-  sub: string;
-};
-
-export type HomeAboutSettings = {
-  title: string;
-  quote: string;
-  paragraph2: string;
-  paragraph3: string;
-};
 
 const defaultContacts = (): ContactsSettings => ({
   phone: siteConfig.phone,

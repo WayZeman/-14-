@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Section, Kicker, DisplayTitle } from "@/components/ui/section";
 import { Reveal } from "@/components/shared/reveal";
 import { ThemedImage } from "@/components/ui/themed-image";
-import type { HomeAboutSettings } from "@/lib/cms";
+import type { HomeAboutSettings } from "@/lib/cms-types";
 
 export function AboutSection({ content }: { content: HomeAboutSettings }) {
   const img = siteImages.illustrative.teamCoordination;

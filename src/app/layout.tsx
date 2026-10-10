@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Lora, Manrope } from "next/font/google";
 import { SiteChrome } from "@/components/layout/site-chrome";
+import { FooterGate } from "@/components/layout/footer-gate";
 import { Footer } from "@/components/layout/footer";
 import { SiteJsonLd } from "@/components/seo/json-ld";
 import { siteCopy } from "@/content/site-copy";
@@ -102,7 +103,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Пропустити до контенту
         </a>
-        <SiteChrome footer={<Footer />}>{children}</SiteChrome>
+        <SiteChrome>{children}</SiteChrome>
+        <FooterGate>
+          <Footer />
+        </FooterGate>
       </body>
     </html>
   );
