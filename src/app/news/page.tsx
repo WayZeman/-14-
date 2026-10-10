@@ -5,7 +5,13 @@ import { db } from "@/db";
 import { newsArticles } from "@/db/schema";
 import { formatUaDate } from "@/lib/utils";
 import { siteCopy } from "@/content/site-copy";
-import { PageFrame, PageHeader, ContentPanel } from "@/components/layout/page-frame";
+import {
+  PageFrame,
+  PageHeader,
+  ContentPanel,
+  PageList,
+  pageListLinkClassName,
+} from "@/components/layout/page-frame";
 
 export const metadata: Metadata = {
   title: "Новини",
@@ -42,30 +48,28 @@ export default async function NewsPage() {
   return (
     <PageFrame>
       <PageHeader kicker="Медіа" title={siteCopy.newsPage.title} />
-      <ContentPanel className="!max-w-none">
-        <div className="mx-auto max-w-[var(--container-max)] px-5 md:px-8">
-          {items.length === 0 ? (
-            <p className="text-[var(--ink-soft)]">{siteCopy.newsPage.empty}</p>
-          ) : (
-            <ul className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
-              {items.map((item) => (
-                <li key={item.id}>
-                  <Link href={`/news/${item.slug}`} className="group block py-8">
-                    <time className="text-meta text-[var(--muted)]">
-                      {formatUaDate(item.publishedAt)}
-                    </time>
-                    <h2 className="mt-2 font-editorial text-2xl text-[var(--graphite)] group-hover:text-[var(--olive-ink)] md:text-3xl">
-                      {item.title}
-                    </h2>
-                    {item.excerpt ? (
-                      <p className="mt-3 max-w-2xl text-sm text-[var(--ink-soft)]">{item.excerpt}</p>
-                    ) : null}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+      <ContentPanel>
+        {items.length === 0 ? (
+          <p className="max-w-2xl text-[var(--ink-soft)]">{siteCopy.newsPage.empty}</p>
+        ) : (
+          <PageList>
+            {items.map((item) => (
+              <li key={item.id}>
+                <Link href={`/news/${item.slug}`} className={pageListLinkClassName()}>
+                  <time className="text-meta text-[var(--muted)]">{formatUaDate(item.publishedAt)}</time>
+                  <h2 className="mt-2 font-editorial text-2xl text-[var(--graphite)] group-hover:text-[var(--olive-ink)] md:text-3xl">
+                    {item.title}
+                  </h2>
+                  {item.excerpt ? (
+                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
+                      {item.excerpt}
+                    </p>
+                  ) : null}
+                </Link>
+              </li>
+            ))}
+          </PageList>
+        )}
       </ContentPanel>
     </PageFrame>
   );

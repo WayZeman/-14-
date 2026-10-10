@@ -5,7 +5,17 @@ import { vacancies } from "@/db/schema";
 import { siteCopy } from "@/content/site-copy";
 import { siteImages } from "@/content/image-catalog";
 import { siteConfig } from "@/lib/site-config";
-import { PageFrame, PageHeader, ContentPanel } from "@/components/layout/page-frame";
+import {
+  PageFrame,
+  PageHeader,
+  ContentPanel,
+  PageCard,
+  PageSplit,
+  PageSplitAside,
+  PageSplitMain,
+  PagePhoneLink,
+  PageActionLink,
+} from "@/components/layout/page-frame";
 import { LinkButton } from "@/components/ui/link-button";
 import { ApplicationForm } from "@/components/join/application-form";
 
@@ -43,43 +53,41 @@ export default async function JoinPage() {
         media={siteImages.illustrative.heroAtmosphere}
       />
 
-      <ContentPanel className="!max-w-none">
-        <div className="mx-auto grid max-w-[var(--container-max)] gap-12 lg:grid-cols-12 lg:px-8">
-          <aside className="space-y-8 lg:col-span-5">
-            <div className="border border-[var(--line)] bg-white p-6 md:p-8">
+      <ContentPanel>
+        <PageSplit>
+          <PageSplitAside>
+            <PageCard>
               <h2 className="font-display text-lg font-semibold text-[var(--graphite)]">
                 {siteCopy.joinPage.contactTitle}
               </h2>
-              <p className="mt-2 text-sm text-[var(--ink-soft)]">{siteConfig.workingHours}</p>
-              <a
-                href={`tel:${siteConfig.phone}`}
-                className="mt-4 inline-flex h-12 w-full items-center justify-center bg-[var(--graphite)] px-6 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-              >
+              <p className="mt-2 text-sm text-[var(--ink-soft)] md:text-base">{siteConfig.workingHours}</p>
+              <PagePhoneLink phone={siteConfig.phone} className="mt-5">
                 {siteCopy.finalCta.ctaPhone}
-              </a>
+              </PagePhoneLink>
               <div className="mt-6 flex flex-col gap-3">
                 <LinkButton href="/vacancies" variant="outline" className="w-full">
                   {siteCopy.joinPage.ctaVacancies}
                 </LinkButton>
-                <a
+                <PageActionLink
                   href={siteConfig.facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center border border-[var(--line)] text-sm font-semibold text-[var(--graphite)]"
+                  variant="outline"
+                  className="w-full"
                 >
                   Facebook
-                </a>
+                </PageActionLink>
               </div>
-            </div>
+            </PageCard>
 
-            <div className="border border-[var(--line)] bg-[var(--milk-soft)] p-6 md:p-8">
+            <PageCard tone="soft">
               <h2 className="font-display text-lg font-semibold text-[var(--graphite)]">
                 Переваги служби
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-[var(--ink-soft)]">
+              <p className="mt-4 text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
                 {siteConfig.benefitsOfficial}
               </p>
-            </div>
+            </PageCard>
 
             <div>
               <h2 className="font-display text-lg font-semibold text-[var(--graphite)]">
@@ -89,17 +97,19 @@ export default async function JoinPage() {
                 {siteCopy.joinFaq.map((item) => (
                   <div key={item.q} className="border-t border-[var(--line)] pt-4">
                     <dt className="font-semibold text-[var(--graphite)]">{item.q}</dt>
-                    <dd className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">{item.a}</dd>
+                    <dd className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
+                      {item.a}
+                    </dd>
                   </div>
                 ))}
               </dl>
             </div>
-          </aside>
+          </PageSplitAside>
 
-          <div className="lg:col-span-7">
+          <PageSplitMain>
             <ApplicationForm directions={directions} />
-          </div>
-        </div>
+          </PageSplitMain>
+        </PageSplit>
       </ContentPanel>
     </PageFrame>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteCopy } from "@/content/site-copy";
-import { PageFrame, PageHeader, ContentPanel } from "@/components/layout/page-frame";
+import { PageFrame, PageHeader, ContentPanel, PageCard } from "@/components/layout/page-frame";
 
 export const metadata: Metadata = {
   title: "Люди",
@@ -11,8 +11,10 @@ export default function PeoplePage() {
   return (
     <PageFrame>
       <PageHeader kicker="Редакція" title={siteCopy.peoplePage.title} lead={siteCopy.peoplePage.body} />
-      <ContentPanel>
-        <p className="text-sm text-[var(--muted)]">{siteCopy.peoplePage.note}</p>
+      <ContentPanel width="narrow">
+        <PageCard tone="soft">
+          <p className="text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">{siteCopy.peoplePage.note}</p>
+        </PageCard>
       </ContentPanel>
     </PageFrame>
   );

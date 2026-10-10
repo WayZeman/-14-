@@ -34,7 +34,7 @@ export default async function HistoryPage() {
   return (
     <PageFrame>
       <PageHeader kicker="Хронологія" title={title} media={siteImages.illustrative.historyArchive} />
-      <ContentPanel>
+      <ContentPanel width="narrow">
         <div className="prose-orb whitespace-pre-line">{body}</div>
       </ContentPanel>
     </PageFrame>

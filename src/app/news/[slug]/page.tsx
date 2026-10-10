@@ -51,18 +51,16 @@ export default async function NewsArticlePage({ params }: Props) {
 
   return (
     <PageFrame>
-      <ContentPanel>
+      <ContentPanel width="narrow">
         <BackLink href="/news">Усі новини</BackLink>
-        <time className="mt-8 block text-meta text-[var(--muted)]">
-          {formatUaDate(article.publishedAt)}
-        </time>
+        <time className="mt-8 block text-meta text-[var(--muted)]">{formatUaDate(article.publishedAt)}</time>
         <DisplayTitle as="h1" className="mt-3">
           {article.title}
         </DisplayTitle>
         {article.excerpt ? <p className="text-lead mt-5">{article.excerpt}</p> : null}
         <div className="prose-orb mt-10 whitespace-pre-line">{article.body}</div>
         {article.youtubeId ? (
-          <div className="mt-12 aspect-video overflow-hidden bg-[var(--graphite)]">
+          <div className="mt-12 aspect-video overflow-hidden rounded-[var(--radius-sm)] bg-[var(--graphite)]">
             <iframe
               className="h-full w-full"
               src={`https://www.youtube-nocookie.com/embed/${article.youtubeId}`}

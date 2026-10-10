@@ -31,16 +31,19 @@ export function Kicker({
   index,
   children,
   dark,
+  className,
 }: {
   index?: string;
   children: React.ReactNode;
   dark?: boolean;
+  className?: string;
 }) {
   return (
     <div
       className={cn(
         "mb-5 flex items-center gap-3 text-meta",
         dark ? "text-white/50" : "text-[var(--muted)]",
+        className,
       )}
     >
       {index ? (

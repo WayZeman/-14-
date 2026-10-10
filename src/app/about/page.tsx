@@ -34,7 +34,7 @@ export default async function AboutPage() {
   return (
     <PageFrame>
       <PageHeader kicker="Про батальйон" title={title} />
-      <ContentPanel>
+      <ContentPanel width="narrow">
         <div className="prose-orb whitespace-pre-line">{body}</div>
       </ContentPanel>
     </PageFrame>

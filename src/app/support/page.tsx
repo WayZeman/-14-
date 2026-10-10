@@ -3,8 +3,14 @@
 import { useEffect, useState } from "react";
 import { siteCopy } from "@/content/site-copy";
 import { siteConfig } from "@/lib/site-config";
-import { maskCardNumber } from "@/lib/mask-card";
-import { PageFrame, PageHeader, ContentPanel } from "@/components/layout/page-frame";
+import {
+  PageFrame,
+  PageHeader,
+  ContentPanel,
+  PageGrid,
+  PageCentered,
+} from "@/components/layout/page-frame";
+import { SupportCampaignCard } from "@/components/support/support-campaign-card";
 
 type Campaign = {
   id: string;
@@ -19,7 +25,7 @@ type Campaign = {
 
 export default function SupportPage() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
-  const [copied, setCopied] = useState(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/campaigns")
@@ -28,11 +34,11 @@ export default function SupportPage() {
       .catch(() => setCampaigns([]));
   }, []);
 
-  async function copyCard(number: string) {
+  async function copyCard(id: string, number: string) {
     try {
       await navigator.clipboard.writeText(number.replace(/\s/g, ""));
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000);
     } catch {
       /* ignore */
     }
@@ -64,61 +70,40 @@ export default function SupportPage() {
         title={siteCopy.supportPage.title}
         lead={siteCopy.supportPage.intro}
       />
-      <ContentPanel className="!max-w-none">
-        <div className="mx-auto grid max-w-[var(--container-max)] gap-6 px-5 md:grid-cols-2 md:px-8">
-          {list.map((c) => (
-            <article
-              key={c.id}
-              className="flex flex-col border border-[var(--line)] bg-white p-6 md:p-8"
-            >
-              <div className="flex flex-wrap items-center gap-3">
-                <h2 className="font-editorial text-2xl text-[var(--graphite)]">{c.title}</h2>
-                <span className="text-meta rounded-sm bg-[var(--olive)]/10 px-2 py-1 text-[var(--olive-deep)]">
-                  {c.status === "completed" ? "Завершено" : "Активний"}
-                </span>
-              </div>
-              {c.description ? (
-                <p className="mt-4 text-sm leading-relaxed text-[var(--ink-soft)]">{c.description}</p>
-              ) : null}
-
-              {c.goalAmount != null && c.raisedAmount != null ? (
-                <p className="mt-6 font-mono text-sm text-[var(--muted)]">
-                  Зібрано {c.raisedAmount.toLocaleString("uk-UA")} /{" "}
-                  {c.goalAmount.toLocaleString("uk-UA")} грн
-                </p>
-              ) : (
-                <p className="mt-6 text-xs text-[var(--muted)]">{siteCopy.supportPage.noProgress}</p>
-              )}
-
-              <div className="mt-auto flex flex-col gap-3 pt-8 sm:flex-row">
-                {c.monobankUrl ? (
-                  <a
-                    href={c.monobankUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-12 flex-1 items-center justify-center bg-[var(--accent)] px-5 text-sm font-semibold text-[var(--ink-inverse)]"
-                  >
-                    {siteCopy.supportPage.ctaSupport}
-                  </a>
-                ) : null}
-                {c.cardNumber ? (
-                  <button
-                    type="button"
-                    onClick={() => copyCard(c.cardNumber!)}
-                    className="flex flex-1 flex-col items-start justify-center rounded-xl bg-[var(--graphite)] px-4 py-3 text-left"
-                  >
-                    <span className="text-[10px] uppercase tracking-wider text-white/40">
-                      {copied ? "Скопійовано" : "Картка"}
-                    </span>
-                    <span className="mt-1 font-mono text-sm tracking-wider text-white/90">
-                      {maskCardNumber(c.cardNumber)}
-                    </span>
-                  </button>
-                ) : null}
-              </div>
-            </article>
-          ))}
-        </div>
+      <ContentPanel>
+        {list.length === 1 ? (
+          <PageCentered maxWidth="lg">
+            <SupportCampaignCard
+              key={list[0].id}
+              title={list[0].title}
+              description={list[0].description}
+              monobankUrl={list[0].monobankUrl}
+              cardNumber={list[0].cardNumber}
+              status={list[0].status}
+              goalAmount={list[0].goalAmount}
+              raisedAmount={list[0].raisedAmount}
+              copied={copiedId === list[0].id}
+              onCopyCard={(number) => copyCard(list[0].id, number)}
+            />
+          </PageCentered>
+        ) : (
+          <PageGrid columns={2}>
+            {list.map((c) => (
+              <SupportCampaignCard
+                key={c.id}
+                title={c.title}
+                description={c.description}
+                monobankUrl={c.monobankUrl}
+                cardNumber={c.cardNumber}
+                status={c.status}
+                goalAmount={c.goalAmount}
+                raisedAmount={c.raisedAmount}
+                copied={copiedId === c.id}
+                onCopyCard={(number) => copyCard(c.id, number)}
+              />
+            ))}
+          </PageGrid>
+        )}
       </ContentPanel>
     </PageFrame>
   );

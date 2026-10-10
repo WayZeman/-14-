@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { vacancies } from "@/db/schema";
-import { PageFrame, BackLink, ContentPanel } from "@/components/layout/page-frame";
+import { PageFrame, BackLink, ContentPanel, PageCard } from "@/components/layout/page-frame";
 import { DisplayTitle } from "@/components/ui/section";
 import { LinkButton } from "@/components/ui/link-button";
 
@@ -46,7 +46,7 @@ export default async function VacancyPage({ params }: Props) {
 
   return (
     <PageFrame>
-      <ContentPanel>
+      <ContentPanel width="narrow">
         <BackLink href="/vacancies">Усі вакансії</BackLink>
         {vacancy.direction ? (
           <p className="mt-8 text-meta text-[var(--muted)]">{vacancy.direction}</p>
@@ -63,17 +63,19 @@ export default async function VacancyPage({ params }: Props) {
         ) : null}
 
         {vacancy.requirements ? (
-          <div className="mt-10 border border-[var(--line)] bg-[var(--milk-soft)] p-6 md:p-8">
+          <PageCard tone="soft" className="mt-10">
             <h2 className="font-display text-lg font-semibold text-[var(--graphite)]">Вимоги</h2>
-            <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-[var(--ink-soft)]">
+            <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
               {vacancy.requirements}
             </p>
-          </div>
+          </PageCard>
         ) : null}
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <LinkButton href="/join#form">Подати звернення</LinkButton>
-          <LinkButton href="/join" variant="outline">
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <LinkButton href="/join#form" className="w-full sm:w-auto">
+            Подати звернення
+          </LinkButton>
+          <LinkButton href="/join" variant="outline" className="w-full sm:w-auto">
             Зв&apos;язатися з рекрутером
           </LinkButton>
         </div>
