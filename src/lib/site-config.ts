@@ -1,5 +1,5 @@
 /**
- * Перевірені публічні дані з архіву 14orb.co.ua (грудень 2025).
+ * Публічні дані офіційного сайту 14orb.co.ua.
  * Маркетингові тексти секцій — у src/content/site-copy.ts
  */
 export const siteConfig = {
@@ -19,7 +19,7 @@ export const siteConfig = {
     "https://docs.google.com/forms/d/e/1FAIpQLSdKavNYkm683sjqsMYvwBnV4TMqXqyw71uCifxSf6OVcXdWWw/viewform?usp=header",
   monobankUrl: "https://send.monobank.ua/jar/6eFKaDCcuv",
   cardNumber: "4441111126857253",
-  /** Офіційна формулювання з сайту — використовувати один раз (about / SEO). */
+  /** Офіційне формулювання — один раз (about / SEO). */
   aboutOfficial:
     "14 окремий розвідувальний батальйон — це очі і вуха Збройних сил. Завдяки досвіду та технологіям ми рятуємо життя та змінюємо хід бойових дій.",
   benefitsOfficial:

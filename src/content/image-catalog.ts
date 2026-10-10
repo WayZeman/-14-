@@ -7,7 +7,7 @@ export const siteImages = {
   homeHero: {
     /** JPEG — менше артефактів на великому екрані ніж агресивний WebP */
     src: "/images/sections/hero-home.jpg",
-    alt: "14 ОРБ — головний кадр (архівна графіка сайту, не документальне фото операції)",
+    alt: "14 ОРБ — головний кадр (ілюстративна графіка, не документальне фото операції)",
     priority: true,
   },
   official: {
@@ -36,7 +36,7 @@ export const siteImages = {
     },
     historyArchive: {
       src: "/images/sections/history-archive.webp",
-      alt: "Ілюстративний кадр: архівна атмосфера, не історичний документ",
+      alt: "Ілюстративний кадр, не історичний документ",
     },
     backgroundMist: {
       src: "/images/sections/background-mist.webp",
