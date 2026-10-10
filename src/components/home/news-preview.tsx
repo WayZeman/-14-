@@ -6,12 +6,11 @@ import { Container } from "@/components/ui/container";
 import { Section, Kicker, DisplayTitle } from "@/components/ui/section";
 import { Reveal } from "@/components/shared/reveal";
 import { NewsFeedFeatured } from "@/components/news/news-feed-list";
-import { FacebookFeedPanel } from "@/components/news/facebook-feed-panel";
+import { NewsSocialCta } from "@/components/news/news-social-cta";
 
 export function NewsPreview({ items }: { items: NewsFeedItem[] }) {
-  const siteOrApi = items.filter((i) => i.source === "site" || i.source === "facebook" || i.source === "instagram");
-  const [featured, ...rest] = siteOrApi;
-  const showList = siteOrApi.length > 0;
+  const siteItems = items.filter((i) => i.source === "site");
+  const [featured, ...rest] = siteItems;
 
   return (
     <Section id="news" tone="paper">
@@ -31,8 +30,12 @@ export function NewsPreview({ items }: { items: NewsFeedItem[] }) {
           </Reveal>
         </div>
 
-        {showList ? (
-          <div className="mt-10 grid gap-8 lg:grid-cols-12">
+        <Reveal className="mt-10 max-w-xl">
+          <NewsSocialCta />
+        </Reveal>
+
+        {siteItems.length > 0 ? (
+          <div className="mt-12 grid gap-8 border-t border-[var(--line)] pt-10 lg:grid-cols-12">
             {featured ? (
               <Reveal className="lg:col-span-7">
                 <NewsFeedFeatured item={featured} />
@@ -48,11 +51,7 @@ export function NewsPreview({ items }: { items: NewsFeedItem[] }) {
               ))}
             </ul>
           </div>
-        ) : (
-          <Reveal className="mt-10">
-            <FacebookFeedPanel compact showHint />
-          </Reveal>
-        )}
+        ) : null}
       </Container>
     </Section>
   );
