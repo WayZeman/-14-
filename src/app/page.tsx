@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { eq, desc } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { db } from "@/db";
-import { newsArticles, vacancies } from "@/db/schema";
+import { vacancies } from "@/db/schema";
+import { getNewsFeed } from "@/lib/news-feed";
 import { Hero } from "@/components/home/hero";
 import { AboutSection } from "@/components/home/about";
 import { DirectionsSection } from "@/components/home/directions";
@@ -36,18 +37,7 @@ async function getHomeData() {
         .where(eq(vacancies.status, "open"))
         .orderBy(vacancies.sortOrder)
         .limit(6),
-      db
-        .select({
-          id: newsArticles.id,
-          title: newsArticles.title,
-          slug: newsArticles.slug,
-          excerpt: newsArticles.excerpt,
-          publishedAt: newsArticles.publishedAt,
-        })
-        .from(newsArticles)
-        .where(eq(newsArticles.status, "published"))
-        .orderBy(desc(newsArticles.publishedAt))
-        .limit(3),
+      getNewsFeed({ limit: 5 }),
     ]);
     return { vacancyRows, newsRows };
   } catch {

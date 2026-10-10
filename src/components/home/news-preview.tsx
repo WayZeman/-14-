@@ -1,19 +1,13 @@
 import Link from "next/link";
 import { siteCopy } from "@/content/site-copy";
 import { formatUaDate } from "@/lib/utils";
+import type { NewsFeedItem } from "@/lib/news-feed";
 import { Container } from "@/components/ui/container";
 import { Section, Kicker, DisplayTitle } from "@/components/ui/section";
 import { Reveal } from "@/components/shared/reveal";
+import { NewsFeedFeatured } from "@/components/news/news-feed-list";
 
-type NewsItem = {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string | null;
-  publishedAt: Date | null;
-};
-
-export function NewsPreview({ items }: { items: NewsItem[] }) {
+export function NewsPreview({ items }: { items: NewsFeedItem[] }) {
   const [featured, ...rest] = items;
 
   return (
@@ -42,29 +36,14 @@ export function NewsPreview({ items }: { items: NewsItem[] }) {
           <div className="mt-10 grid gap-8 lg:grid-cols-12">
             {featured ? (
               <Reveal className="lg:col-span-7">
-                <article className="group">
-                  <time className="text-meta text-[var(--muted)]">
-                    {formatUaDate(featured.publishedAt)}
-                  </time>
-                  <h3 className="mt-3 font-editorial text-3xl leading-tight text-[var(--graphite)] group-hover:text-[var(--olive-ink)] md:text-4xl">
-                    <Link href={`/news/${featured.slug}`}>{featured.title}</Link>
-                  </h3>
-                  {featured.excerpt ? (
-                    <p className="mt-4 text-lead">{featured.excerpt}</p>
-                  ) : null}
-                </article>
+                <NewsFeedFeatured item={featured} />
               </Reveal>
             ) : null}
             <ul className="flex flex-col gap-6 lg:col-span-5 lg:border-l lg:border-[var(--line)] lg:pl-8">
-              {rest.map((item, i) => (
+              {rest.slice(0, 4).map((item, i) => (
                 <Reveal key={item.id} delay={0.05 * i}>
                   <li className="border-t border-[var(--line)] pt-6 first:border-0 first:pt-0 lg:first:border-t lg:first:pt-6">
-                    <time className="text-meta text-[var(--muted)]">
-                      {formatUaDate(item.publishedAt)}
-                    </time>
-                    <h3 className="mt-2 font-display text-lg font-semibold text-[var(--graphite)] hover:text-[var(--olive-ink)]">
-                      <Link href={`/news/${item.slug}`}>{item.title}</Link>
-                    </h3>
+                    <FeedSideItem item={item} />
                   </li>
                 </Reveal>
               ))}
@@ -73,5 +52,28 @@ export function NewsPreview({ items }: { items: NewsItem[] }) {
         )}
       </Container>
     </Section>
+  );
+}
+
+function FeedSideItem({ item }: { item: NewsFeedItem }) {
+  const title = (
+    <h3 className="mt-2 font-display text-lg font-semibold text-[var(--graphite)] hover:text-[var(--olive-ink)]">
+      {item.title}
+    </h3>
+  );
+
+  return (
+    <>
+      <time className="text-meta text-[var(--muted)]">{formatUaDate(item.publishedAt)}</time>
+      {item.isExternal ? (
+        <a href={item.href} target="_blank" rel="noopener noreferrer" className="block">
+          {title}
+        </a>
+      ) : (
+        <Link href={item.href} className="block">
+          {title}
+        </Link>
+      )}
+    </>
   );
 }

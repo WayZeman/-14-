@@ -15,6 +15,13 @@ export const siteConfig = {
   phoneDisplay: "+38 (095) 078 66 75",
   workingHours: "Щоденно з 09:00 до 20:00",
   facebookUrl: "https://www.facebook.com/14osb/?locale=uk_UA",
+  /** Username сторінки для Graph API (якщо FACEBOOK_PAGE_ID не задано) */
+  facebookPageUsername: "14osb",
+  instagramUrl: "https://www.instagram.com/14_orb/",
+  social: [
+    { label: "Facebook", href: "https://www.facebook.com/14osb/?locale=uk_UA" },
+    { label: "Instagram", href: "https://www.instagram.com/14_orb/" },
+  ] as const,
   applicationFormUrl:
     "https://docs.google.com/forms/d/e/1FAIpQLSdKavNYkm683sjqsMYvwBnV4TMqXqyw71uCifxSf6OVcXdWWw/viewform?usp=header",
   monobankUrl: "https://send.monobank.ua/jar/6eFKaDCcuv",

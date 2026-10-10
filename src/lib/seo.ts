@@ -62,7 +62,7 @@ export function buildSiteJsonLd() {
         url,
         description: siteConfig.aboutOfficial,
         telephone: siteConfig.phone,
-        sameAs: [siteConfig.facebookUrl],
+        sameAs: [siteConfig.facebookUrl, siteConfig.instagramUrl],
         logo: absoluteUrl("/brand/favicon-96.png"),
         image: absoluteUrl("/images/sections/hero-home.jpg"),
         areaServed: {

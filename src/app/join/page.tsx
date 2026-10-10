@@ -14,8 +14,8 @@ import {
   PageSplitAside,
   PageSplitMain,
   PagePhoneLink,
-  PageActionLink,
 } from "@/components/layout/page-frame";
+import { SocialLinks } from "@/components/layout/social-links";
 import { LinkButton } from "@/components/ui/link-button";
 import { ApplicationForm } from "@/components/join/application-form";
 
@@ -68,15 +68,7 @@ export default async function JoinPage() {
                 <LinkButton href="/vacancies" variant="outline" className="w-full">
                   {siteCopy.joinPage.ctaVacancies}
                 </LinkButton>
-                <PageActionLink
-                  href={siteConfig.facebookUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="outline"
-                  className="w-full"
-                >
-                  Facebook
-                </PageActionLink>
+                <SocialLinks stacked />
               </div>
             </PageCard>
 

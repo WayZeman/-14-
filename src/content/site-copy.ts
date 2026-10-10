@@ -101,7 +101,7 @@ export const siteCopy = {
   newsPreview: {
     title: "Останні публікації",
     empty:
-      "Новини з’являться після публікації в адмінпанелі. Соцмережі дублюємо лише за потреби.",
+      "Слідкуйте за оновленнями у Facebook та Instagram — стрічка з’явиться тут автоматично.",
     cta: "Архів новин",
   },
 
@@ -176,7 +176,14 @@ export const siteCopy = {
 
   newsPage: {
     title: "Новини",
-    empty: "Публікацій ще немає.",
+    intro:
+      "Матеріали з офіційного сайту та публікації зі сторінки Facebook батальйону (і Instagram, якщо підключено до Meta).",
+    empty: "Поки немає записів у стрічці. Перегляньте соцмережі нижче.",
+    sourceSite: "Сайт",
+    sourceFacebook: "Facebook",
+    sourceInstagram: "Instagram",
+    socialTitle: "Соцмережі батальйону",
+    facebookEmbedHint: "Останні публікації з офіційної сторінки Facebook.",
   },
 
   contactsPage: {

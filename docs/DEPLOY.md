@@ -20,8 +20,22 @@ Neon project (створено): `14orb-website` · id `weathered-field-27809363
 | `ADMIN_BOOTSTRAP_EMAIL` | Email першого адміна для seed |
 | `ADMIN_BOOTSTRAP_PASSWORD` | Пароль першого адміна (змініть після входу) |
 | `NEXT_PUBLIC_SITE_URL` | Публічний URL (`https://14orb.co.ua`) |
+| `FACEBOOK_PAGE_ID` | ID або username сторінки (`14osb`) — для стрічки новин |
+| `FACEBOOK_PAGE_ACCESS_TOKEN` | Page access token з Meta for Developers (див. нижче) |
 
 Ніколи не комітьте `.env.local` і не вставляйте паролі БД у клієнтський код.
+
+### Новини з Facebook / Instagram
+
+1. Створіть [Meta for Developers](https://developers.facebook.com/) app (тип Business).
+2. Додайте продукт **Facebook Login for Business** або **Pages API**.
+3. Отримайте **Page access token** для сторінки [14osb](https://www.facebook.com/14osb/) з правами `pages_read_engagement` (і `instagram_basic` / `pages_show_list`, якщо потрібен Instagram).
+4. Додайте у Vercel (Production):
+   - `FACEBOOK_PAGE_ID=14osb`
+   - `FACEBOOK_PAGE_ACCESS_TOKEN=…` (довгостроковий page token)
+5. Redeploy. Розділ `/news` і блок на головній підтягнуть пости через Graph API (кеш ~15 хв).
+
+Без токена на `/news` показується вбудована стрічка Facebook (віджет). Instagram у списку з’явиться автоматично, якщо `@14_orb` прив’язано до Facebook-сторінки в Meta Business Suite.
 
 ## Локальний запуск
 

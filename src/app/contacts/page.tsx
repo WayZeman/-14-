@@ -8,8 +8,8 @@ import {
   PageGrid,
   PageCard,
   PagePhoneLink,
-  PageActionLink,
 } from "@/components/layout/page-frame";
+import { SocialLinks } from "@/components/layout/social-links";
 import { LinkButton } from "@/components/ui/link-button";
 
 export const metadata: Metadata = {
@@ -36,15 +36,7 @@ export default function ContactsPage() {
             <h2 className="font-display text-lg font-semibold text-[var(--graphite)]">
               {siteCopy.contactsPage.socialTitle}
             </h2>
-            <PageActionLink
-              href={siteConfig.facebookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              className="mt-5"
-            >
-              Facebook
-            </PageActionLink>
+            <SocialLinks className="mt-5" stacked />
             <div className="mt-auto flex flex-col gap-3 pt-8">
               <LinkButton href="/join#form" className="w-full">
                 {siteCopy.contactsPage.ctaForm}

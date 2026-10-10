@@ -2,6 +2,7 @@ import Link from "next/link";
 import { siteCopy } from "@/content/site-copy";
 import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
+import { SocialLinks } from "@/components/layout/social-links";
 
 export function Footer() {
   return (
@@ -12,6 +13,7 @@ export function Footer() {
             <p className="font-display text-lg text-white">{siteConfig.name}</p>
             <p className="mt-1 text-sm text-white/55">{siteConfig.fullName}</p>
             <p className="mt-2 max-w-sm text-sm text-white/50">{siteCopy.footer.blurb}</p>
+            <SocialLinks className="mt-6 [&_a]:border-white/20 [&_a]:text-white/85 [&_a]:hover:border-white/40 [&_a]:hover:bg-white/5" />
           </div>
           <nav
             aria-label="Підвал"
