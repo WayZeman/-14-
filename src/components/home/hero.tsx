@@ -42,15 +42,15 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="text-meta mb-6 text-white/55"
           >
-            {siteConfig.fullName}
+            {siteConfig.name} · {siteConfig.fullName}
           </motion.p>
 
-          <TextReveal
-            as="h1"
-            text={headline}
-            delay={0.08}
-            className="font-editorial text-[clamp(2.85rem,9vw,5.25rem)] leading-[0.95] tracking-[-0.03em] text-white"
-          />
+          <h1 className="font-editorial text-[clamp(2.85rem,9vw,5.25rem)] leading-[0.95] tracking-[-0.03em] text-white">
+            <span className="sr-only">
+              {siteConfig.name} — {siteConfig.fullName}.{" "}
+            </span>
+            <TextReveal as="span" text={headline} delay={0.08} />
+          </h1>
 
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 12 }}

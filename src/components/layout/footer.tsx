@@ -10,6 +10,7 @@ export function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
             <p className="font-display text-lg text-white">{siteConfig.name}</p>
+            <p className="mt-1 text-sm text-white/55">{siteConfig.fullName}</p>
             <p className="mt-2 max-w-sm text-sm text-white/50">{siteCopy.footer.blurb}</p>
           </div>
           <nav

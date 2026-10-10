@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { eq, desc } from "drizzle-orm";
 import { db } from "@/db";
 import { newsArticles, vacancies } from "@/db/schema";
@@ -9,8 +10,16 @@ import { JoinStepsSection } from "@/components/home/join-steps";
 import { NewsPreview } from "@/components/home/news-preview";
 import { SupportCta } from "@/components/home/support-cta";
 import { FinalCta } from "@/components/home/final-cta";
+import { siteCopy } from "@/content/site-copy";
+import { defaultSeoTitle } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: { absolute: defaultSeoTitle },
+  description: siteCopy.meta.defaultDescription,
+  alternates: { canonical: "/" },
+};
 
 async function getHomeData() {
   try {

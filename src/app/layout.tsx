@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Lora, Manrope } from "next/font/google";
 import { SiteChrome } from "@/components/layout/site-chrome";
+import { SiteJsonLd } from "@/components/seo/json-ld";
 import { siteCopy } from "@/content/site-copy";
 import { siteConfig } from "@/lib/site-config";
+import { defaultSeoTitle, seoKeywords } from "@/lib/seo";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -26,17 +28,16 @@ const lora = Lora({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.fullName} — ${siteConfig.slogan}`,
-    template: `%s — ${siteConfig.name}`,
+    default: defaultSeoTitle,
+    template: `%s — ${siteConfig.name} | ${siteConfig.fullName}`,
   },
   description: siteCopy.meta.defaultDescription,
-  keywords: [
-    "14 ОРБ",
-    "14 окремий розвідувальний батальйон",
-    "військова розвідка",
-    "БПЛА",
-    "рекрутинг ЗСУ",
-  ],
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.fullName, url: siteConfig.url }],
+  creator: siteConfig.fullName,
+  publisher: siteConfig.fullName,
+  category: "military",
+  keywords: [...seoKeywords],
   alternates: {
     canonical: "/",
     languages: { uk: "/", "x-default": "/" },
@@ -45,18 +46,38 @@ export const metadata: Metadata = {
     type: "website",
     locale: "uk_UA",
     url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: `${siteConfig.name} — ${siteConfig.slogan}`,
+    siteName: `${siteConfig.name} — ${siteConfig.fullName}`,
+    title: defaultSeoTitle,
     description: siteCopy.meta.defaultDescription,
-    images: [{ url: "/images/sections/hero-home.jpg", width: 1600, height: 900 }],
+    images: [
+      {
+        url: "/images/sections/hero-home.jpg",
+        width: 1600,
+        height: 900,
+        alt: `${siteConfig.name} — ${siteConfig.fullName}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — ${siteConfig.slogan}`,
+    title: defaultSeoTitle,
     description: siteCopy.meta.defaultDescription,
     images: ["/images/sections/hero-home.jpg"],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+  },
   icons: {
     icon: [
       { url: "/brand/favicon.svg", type: "image/svg+xml" },
@@ -73,6 +94,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${manrope.variable} ${jetbrains.variable} ${lora.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[var(--graphite)] text-white">
+        <SiteJsonLd />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-black"
