@@ -22,8 +22,8 @@ export function FacebookFeedPanel({ compact = false, className, showHint = true 
         </p>
       ) : null}
 
-      <div className={cn("mx-auto", compact ? "max-w-sm" : "max-w-xl")}>
-        <FacebookPageEmbed compact={compact} height={compact ? 420 : 780} />
+      <div className={cn("mx-auto w-full", compact ? "max-w-[340px]" : "max-w-[500px]")}>
+        <FacebookPageEmbed compact={compact} height={compact ? 480 : 720} />
       </div>
 
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:justify-center">
