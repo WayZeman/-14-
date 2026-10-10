@@ -33,7 +33,7 @@ export default function ApplyGuidePage() {
         lead="Коротке відео: шлях від головної сторінки до відправки форми рекрутеру."
       />
       <ContentPanel width="narrow">
-        <div className="overflow-hidden border border-[var(--line)] bg-black">
+        <div className="overflow-hidden border border-[var(--line)] bg-black shadow-[0_30px_80px_-40px_rgba(0,0,0,0.65)]">
           <video
             className="aspect-video w-full"
             controls
@@ -49,6 +49,18 @@ export default function ApplyGuidePage() {
             .
           </video>
         </div>
+        <p className="mt-3 text-xs text-[var(--muted)]">
+          Знято в стилі{" "}
+          <a
+            href="https://github.com/DougNix/recordly"
+            className="underline underline-offset-2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Recordly
+          </a>
+          : soft-zoom, студійна рамка, курсорні анімації.
+        </p>
 
         <PageCard className="mt-8" tone="soft">
           <h2 className="font-display text-lg font-semibold text-[var(--graphite)]">

@@ -14,7 +14,8 @@
     "content:check": "tsx scripts/check-content-duplicates.ts",
     "images:optimize": "node scripts/optimize-images.mjs",
     "images:hero": "node scripts/build-hero-image.mjs",
-    "video:apply-guide": "node scripts/record-apply-guide.mjs"
+    "video:apply-guide": "node scripts/record-apply-guide.mjs",
+    "video:apply-guide:recordly": "node scripts/record-apply-guide-recordly.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
