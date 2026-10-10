@@ -179,16 +179,7 @@ export function ApplicationForm({
       </button>
 
       <p className="text-xs text-[var(--muted)]">
-        Або заповніть{" "}
-        <a
-          href={siteConfig.applicationFormUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline"
-        >
-          {siteCopy.form.altGoogle}
-        </a>
-        , або{" "}
+        Або{" "}
         <a href={`tel:${siteConfig.phone}`} className="underline">
           зателефонуйте
         </a>

@@ -5,6 +5,7 @@ import { applications } from "@/db/schema";
 import { getSessionUser } from "@/lib/auth";
 import { AdminShell } from "@/components/admin/shell";
 import { formatUaDate } from "@/lib/utils";
+import { deleteApplicationAction } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -38,19 +39,42 @@ export default async function AdminApplicationsPage() {
         ) : (
           items.map((item) => (
             <li key={item.id} className="border bg-white p-4 text-sm">
-              <div className="flex flex-wrap justify-between gap-2">
-                <strong>{item.name}</strong>
-                <span className="text-[var(--muted)]">
-                  {formatUaDate(item.createdAt)} · {item.status}
-                </span>
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap justify-between gap-2">
+                    <strong>{item.name}</strong>
+                    <span className="text-[var(--muted)]">
+                      {formatUaDate(item.createdAt)} · {item.status}
+                    </span>
+                  </div>
+                  <div className="mt-2">{item.contact}</div>
+                  {item.direction ? (
+                    <div className="mt-1 text-[var(--muted)]">Напрям: {item.direction}</div>
+                  ) : null}
+                  {item.hasMilitaryExperience != null ? (
+                    <div className="mt-1 text-[var(--muted)]">
+                      Досвід:{" "}
+                      {item.hasMilitaryExperience === true
+                        ? "так"
+                        : item.hasMilitaryExperience === false
+                          ? "ні"
+                          : "не вказано"}
+                    </div>
+                  ) : null}
+                  {item.message ? (
+                    <p className="mt-2 whitespace-pre-line text-[var(--ink-soft)]">{item.message}</p>
+                  ) : null}
+                </div>
+                <form action={deleteApplicationAction}>
+                  <input type="hidden" name="id" value={item.id} />
+                  <button
+                    type="submit"
+                    className="shrink-0 text-sm text-red-700 underline underline-offset-2"
+                  >
+                    Видалити
+                  </button>
+                </form>
               </div>
-              <div className="mt-2">{item.contact}</div>
-              {item.direction ? (
-                <div className="mt-1 text-[var(--muted)]">Напрям: {item.direction}</div>
-              ) : null}
-              {item.message ? (
-                <p className="mt-2 whitespace-pre-line text-[var(--ink-soft)]">{item.message}</p>
-              ) : null}
             </li>
           ))
         )}

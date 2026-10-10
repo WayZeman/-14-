@@ -23,8 +23,6 @@ export const siteConfig = {
     { label: "Facebook", href: "https://www.facebook.com/14osb/?locale=uk_UA" },
     { label: "Instagram", href: "https://www.instagram.com/14_orb/" },
   ] as const,
-  applicationFormUrl:
-    "https://docs.google.com/forms/d/e/1FAIpQLSdKavNYkm683sjqsMYvwBnV4TMqXqyw71uCifxSf6OVcXdWWw/viewform?usp=header",
   monobankUrl: "https://send.monobank.ua/jar/6eFKaDCcuv",
   cardNumber: "4441111126857253",
   /** Офіційне формулювання — один раз (about / SEO). */
