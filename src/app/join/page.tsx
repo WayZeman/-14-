@@ -62,12 +62,6 @@ export default async function JoinPage() {
         lead={intro}
         media={siteImages.illustrative.heroAtmosphere}
       />
-      <div className="mx-auto max-w-[var(--container-max)] px-5 md:px-8">
-        <LinkButton href="/guide/apply" variant="outline" className="mb-2">
-          Відео: як подати заявку
-        </LinkButton>
-      </div>
-
       <ContentPanel>
         <PageSplit>
           <PageSplitAside>
