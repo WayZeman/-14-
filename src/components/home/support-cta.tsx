@@ -70,16 +70,16 @@ export function SupportCta() {
                 </p>
               </button>
 
-              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-5 flex flex-col gap-3">
                 <a
                   href={siteConfig.monobankUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 flex-1 items-center justify-center bg-[var(--accent)] px-5 text-sm font-semibold text-[var(--ink-inverse)]"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-[var(--radius-sm)] bg-[var(--accent)] px-5 py-3.5 text-center text-sm font-semibold tracking-wide text-[var(--ink-inverse)] transition-colors hover:bg-[var(--accent-hover)] focus-ring"
                 >
                   {siteCopy.supportHome.ctaMono}
                 </a>
-                <LinkButton href="/support" variant="outlineOnDark" className="flex-1">
+                <LinkButton href="/support" variant="outlineOnDark" className="w-full py-3.5">
                   {siteCopy.supportHome.ctaAll}
                 </LinkButton>
               </div>

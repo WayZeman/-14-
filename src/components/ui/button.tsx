@@ -19,9 +19,9 @@ const buttonVariants = cva(
           "border border-white/25 bg-transparent text-white hover:border-[var(--accent)]/60 hover:bg-white/5 focus-visible:ring-offset-[var(--graphite)]",
       },
       size: {
-        default: "h-12 px-6",
-        sm: "h-10 px-4 text-xs",
-        lg: "h-14 px-8 text-base",
+        default: "min-h-12 px-6 py-3",
+        sm: "min-h-10 px-4 py-2 text-xs",
+        lg: "min-h-14 px-8 py-3.5 text-base",
       },
     },
     defaultVariants: {

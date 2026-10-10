@@ -12,25 +12,32 @@ export function FinalCta() {
     <Section tone="paper" className="!pb-20">
       <Container>
         <Reveal>
-          <div className="border border-[var(--line)] bg-white px-6 py-10 md:px-12 md:py-14">
+          <div className="border border-[var(--line)] bg-white px-5 py-10 sm:px-6 md:px-12 md:py-14">
             <p className="text-meta text-[var(--muted)]">{siteCopy.finalCta.label}</p>
             <DisplayTitle as="h2" className="mt-3 max-w-2xl text-[clamp(1.75rem,3.5vw,2.75rem)]">
               {siteCopy.finalCta.title}
             </DisplayTitle>
             <Lead className="mt-4">{siteCopy.finalCta.body}</Lead>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <a
                 href={`tel:${siteConfig.phone}`}
-                className={cn(buttonVariants({ variant: "dark", size: "default" }))}
+                className={cn(
+                  buttonVariants({ variant: "dark", size: "default" }),
+                  "w-full !text-white sm:w-auto",
+                )}
               >
                 {siteCopy.finalCta.ctaPhone}
               </a>
-              <LinkButton href="/join#form">{siteCopy.finalCta.ctaForm}</LinkButton>
-              <LinkButton href="/contacts" variant="outline">
+              <LinkButton href="/join#form" className="w-full sm:w-auto">
+                {siteCopy.finalCta.ctaForm}
+              </LinkButton>
+              <LinkButton href="/contacts" variant="outline" className="w-full sm:w-auto">
                 {siteCopy.finalCta.ctaContacts}
               </LinkButton>
             </div>
-            <p className="mt-5 text-sm text-[var(--muted)]">{siteConfig.workingHours}</p>
+            <p className="mt-5 text-center text-sm text-[var(--muted)] sm:text-left">
+              {siteConfig.workingHours}
+            </p>
           </div>
         </Reveal>
       </Container>

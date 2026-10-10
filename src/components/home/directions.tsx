@@ -30,14 +30,14 @@ export function DirectionsSection() {
             {siteCopy.directions.items.map((item, i) => (
               <li
                 key={item.title}
-                className="border-t border-[var(--line-on-dark)] bg-[var(--graphite)]/40 backdrop-blur-[2px]"
+                className="border-t border-[var(--line-on-dark)] bg-[var(--graphite)]/40 px-5 py-7 backdrop-blur-[2px] sm:px-6 md:px-8 md:py-8"
               >
                 <Reveal delay={0.04 * i}>
-                  <div className="grid gap-3 py-7 md:grid-cols-[4rem_1fr] md:gap-6">
+                  <div className="grid gap-3 md:grid-cols-[4rem_1fr] md:gap-6">
                     <span className="font-mono text-sm text-[var(--accent)]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="font-display text-lg font-semibold text-white md:text-xl">
                         {item.title}
                       </h3>
