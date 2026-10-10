@@ -4,7 +4,7 @@ import { SiteChrome } from "@/components/layout/site-chrome";
 import { SiteJsonLd } from "@/components/seo/json-ld";
 import { siteCopy } from "@/content/site-copy";
 import { siteConfig } from "@/lib/site-config";
-import { defaultSeoTitle, seoKeywords } from "@/lib/seo";
+import { defaultSeoTitle, googleSiteVerification, seoKeywords } from "@/lib/seo";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    google: googleSiteVerification,
   },
   icons: {
     icon: [

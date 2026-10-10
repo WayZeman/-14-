@@ -23,6 +23,10 @@ export const defaultSeoTitle = `${siteConfig.name} — ${siteConfig.fullName} | 
 
 export const defaultSeoDescription = siteCopy.meta.defaultDescription;
 
+/** Google Search Console (HTML tag + file). Override via GOOGLE_SITE_VERIFICATION on Vercel. */
+export const googleSiteVerification =
+  process.env.GOOGLE_SITE_VERIFICATION || "DmPtAUJVRB0CisE_l4bZDQYqkq8Sna9ryAeU1aDAut4";
+
 export function absoluteUrl(path = "/") {
   const base = siteConfig.url.replace(/\/$/, "");
   if (!path || path === "/") return base;
