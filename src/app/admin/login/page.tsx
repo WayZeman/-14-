@@ -37,16 +37,17 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-[var(--graphite)] px-5">
       <form
         onSubmit={onSubmit}
-        className="w-full max-w-md border border-white/10 bg-[var(--graphite-soft)] p-8 text-white"
+        className="w-full max-w-md border border-white/15 bg-[var(--graphite-soft)] p-8 text-white"
       >
         <h1 className="font-display text-2xl font-semibold">Адмінпанель 14 ОРБ</h1>
         <p className="mt-2 text-sm text-white/60">Лише для уповноважених осіб</p>
 
         <label className="mt-8 block text-sm">
-          Email
+          Логін
           <input
             name="email"
-            type="email"
+            type="text"
+            autoComplete="username"
             required
             className="mt-2 w-full border border-white/15 bg-black/30 px-4 py-3 text-sm outline-none focus:border-[var(--accent)]"
           />
@@ -56,8 +57,8 @@ export default function AdminLoginPage() {
           <input
             name="password"
             type="password"
+            autoComplete="current-password"
             required
-            minLength={8}
             className="mt-2 w-full border border-white/15 bg-black/30 px-4 py-3 text-sm outline-none focus:border-[var(--accent)]"
           />
         </label>

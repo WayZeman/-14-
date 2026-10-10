@@ -13,8 +13,9 @@ async function main() {
 
   const db = drizzle(neon(url), { schema });
 
-  const email = process.env.ADMIN_BOOTSTRAP_EMAIL || "admin@14orb.local";
-  const password = process.env.ADMIN_BOOTSTRAP_PASSWORD || "ChangeMeAfterFirstLogin!";
+  const email = (process.env.ADMIN_BOOTSTRAP_EMAIL || "14orb").trim().toLowerCase();
+  const password = process.env.ADMIN_BOOTSTRAP_PASSWORD || "7098";
+  const passwordHash = await hash(password, 12);
 
   const existing = await db
     .select()
@@ -27,11 +28,15 @@ async function main() {
       email,
       name: "Адміністратор",
       role: "admin",
-      passwordHash: await hash(password, 12),
+      passwordHash,
     });
     console.log("Admin user created:", email);
   } else {
-    console.log("Admin user already exists");
+    await db
+      .update(schema.users)
+      .set({ passwordHash, role: "admin", updatedAt: new Date() })
+      .where(eq(schema.users.email, email));
+    console.log("Admin user password updated:", email);
   }
 
   const categories = [

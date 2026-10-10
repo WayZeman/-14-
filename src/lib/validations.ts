@@ -24,6 +24,6 @@ export const applicationSchema = z.object({
 export type ApplicationInput = z.infer<typeof applicationSchema>;
 
 export const loginSchema = z.object({
-  email: z.string().email("Некоректний email"),
-  password: z.string().min(8, "Мінімум 8 символів"),
+  email: z.string().trim().min(1, "Вкажіть логін").max(255),
+  password: z.string().min(1, "Вкажіть пароль").max(200),
 });

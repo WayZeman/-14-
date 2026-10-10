@@ -15,14 +15,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Некоректні дані" }, { status: 400 });
     }
 
+    const login = parsed.data.email.trim().toLowerCase();
     const [user] = await db
       .select()
       .from(users)
-      .where(eq(users.email, parsed.data.email.toLowerCase()))
+      .where(eq(users.email, login))
       .limit(1);
 
     if (!user || !(await verifyPassword(parsed.data.password, user.passwordHash))) {
-      return NextResponse.json({ error: "Невірний email або пароль" }, { status: 401 });
+      return NextResponse.json({ error: "Невірний логін або пароль" }, { status: 401 });
     }
 
     await createSession(user.id, user.role);
